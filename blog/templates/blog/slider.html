@@ -1,0 +1,16 @@
+{% extends 'blog/base.html' %}
+
+{% block slider %}
+<div class="swiper slide-1">
+	<div class="swiper-wrapper">
+    {% for slider in sliders %}
+		<a href="" title="" class="swiper-slide relative">
+			<img src="{{ slider.imagesSlider }}" alt="{{ slider.titleSlider }}" class="rounded-md">
+			<h2 class="absolute bottom-5 right-5 left-5 bg-black bg-opacity-70 p-3 rounded-md text-white text-2xl text-center">{{ slider.titleSlider }}</h2>
+		</a>
+    {% endfor %}
+	</div>
+	<div class="swiper-button-next"></div>
+	<div class="swiper-button-prev"></div>
+</div>
+{% endblock %}
