@@ -2,12 +2,22 @@
 
 {% block content %}
     {% for post in posts %}
-        <article class="post">
-            <time class="date">
-                {{ post.published_date }}
-            </time>
-            <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
-            <p>{{ post.text|linebreaksbr }}</p>
-        </article>
+        <a href="{% url 'post_detail' pk=post.pk %}" title="{{ post.title }}" class="flex flex-wrap lg:flex-nowrap items-center gap-5">
+            <img src="{{ post.images.url }}" alt="{{ post.title }}" class="w-64 rounded-md">
+            <div class="flex flex-col gap-2">
+                <h2 class="text-2xl font-bold">{{ post.title }}</h2>
+                <p class="text-justify font-light leading-8 text-sm">{{ post.text|linebreaksbr }}</p>
+                <div class="flex items-center justify-between gap-5">
+                    <div class="flex items-center gap-3">
+                        <time class="date">
+                            {{ post.published_date }}
+                        </time>
+                        <div>سیاسی</div>
+                    </div>
+                    <div class="text-blue-700">ادامه مطلب</div>
+                </div>
+            </div>
+        </a>
+        <div class="w-[80%] mx-auto border-b-2 my-2"></div>
     {% endfor %}
 {% endblock %}
